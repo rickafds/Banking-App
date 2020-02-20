@@ -12,7 +12,6 @@ const initialState = {
   IsLoginRequest: false,
   IsLoginSucess: false,
   IsLoginFailed: false,
-  Token: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -27,7 +26,33 @@ export default function reducer(state = initialState, action) {
         IsLoginRequest: false,
       };
 
+    case Types.LOGIN_ERROR:
+      return {
+        IsLoginRequest: false,
+        IsLoginSucess: false,
+        IsLoginFailed: true,
+      };
+
     default:
       return state;
   }
+}
+
+//action creators
+
+export function login(cpf, password) {
+  return {
+    type: Types.LOGIN_REQUEST,
+    payload: {
+      cpf,
+      password,
+    },
+  };
+}
+
+export function loginSucess(data) {
+  return {
+    type: Types.LOGIN_SUCESS,
+    payload: data,
+  };
 }
