@@ -21,9 +21,10 @@ const Login = ({
   values,
   handleChange,
   handleSubmit,
-  isSubmitting,
   handleBlur,
   errors,
+  request,
+  error,
 }) => {
   return (
     <Container>
@@ -39,8 +40,8 @@ const Login = ({
           value={values.cpf}
           onChangeText={handleChange('cpf')}
           onBlur={handleBlur('cpf')}
-          editable={isSubmitting ? false : true}
-          error={errors.cpf}
+          editable={request ? false : true}
+          error={errors.cpf || error}
         />
 
         <Label>Senha</Label>
@@ -51,13 +52,13 @@ const Login = ({
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           maxLength={15}
-          editable={isSubmitting ? false : true}
-          error={errors.password}
+          editable={request ? false : true}
+          error={errors.password || error}
           secureTextEntry
         />
 
         <Button onPress={handleSubmit}>
-          {isSubmitting ? (
+          {request ? (
             <ActivityIndicator size="small" color={white} />
           ) : (
             <ButtonLabel>Entrar</ButtonLabel>

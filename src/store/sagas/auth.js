@@ -1,5 +1,6 @@
 import {call, put, takeLatest, all} from 'redux-saga/effects';
 import api from '../../services/api';
+import {loginError} from '../ducks/auth';
 
 function* requestLogin(action) {
   try {
@@ -10,7 +11,7 @@ function* requestLogin(action) {
     });
     console.tron.log('user', user);
   } catch (e) {
-    console.tron.log('error', e);
+    yield put(loginError());
   }
 }
 

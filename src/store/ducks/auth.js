@@ -29,7 +29,6 @@ export default function reducer(state = initialState, action) {
     case Types.LOGIN_ERROR:
       return {
         IsLoginRequest: false,
-        IsLoginSucess: false,
         IsLoginFailed: true,
       };
 
@@ -54,5 +53,11 @@ export function loginSucess(data) {
   return {
     type: Types.LOGIN_SUCESS,
     payload: data,
+  };
+}
+
+export function loginError() {
+  return {
+    type: Types.LOGIN_ERROR,
   };
 }
