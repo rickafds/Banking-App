@@ -1,8 +1,8 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-import auth from './auth';
-import {persistReducer} from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
+import auth from './auth';
 
 const rootPersistConfig = {
   key: 'root',

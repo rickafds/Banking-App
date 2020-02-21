@@ -1,4 +1,4 @@
-import {string, object} from 'yup'; // for only what you need
+import { string, object } from 'yup'; // for only what you need
 
 const validationSchema = object().shape({
   cpf: string()

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {white, picled, red} from '../../utils/colors';
+import { white, picled, red } from '../../utils/colors';
 
 export const Container = styled.View`
   flex: 1;
@@ -38,7 +38,7 @@ export const LabelForgot = styled.Text`
 export const Input = styled.TextInput`
   border-bottom-width: 1px;
   padding: 20px;
-  border-bottom-color: ${({error}) => (error ? red : picled)};
+  border-bottom-color: ${({ error }) => (error ? red : picled)};
 `;
 
 export const Button = styled.TouchableOpacity`
