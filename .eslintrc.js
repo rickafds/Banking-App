@@ -1,40 +1,43 @@
 module.exports = {
   env: {
+    node: true,
+    browser: true,
     es6: true,
-  },
-  extends: ['plugin:react/recommended', 'airbnb'],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-    __DEV__: 'readonly',
+    'jest/globals': true,
   },
   parser: 'babel-eslint',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
-  plugins: ['react', 'prettier'],
+  extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:jest/recommended'],
+  plugins: ['jsx-a11y', 'prettier', 'jest', 'import'],
   rules: {
-    'react/jsx-filename-extension': [
-      'warn',
-      {
-        extensions: ['.jsx', '.js'],
-      },
+    'class-methods-use-this': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      { js: 'never', jsx: 'never' },
     ],
-    'import/prefer-default-export': 'off',
+    'import/no-named-as-default': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/prefer-default-export': 0,
+    'no-underscore-dangle': [2, { allow: ['__REDUX_DEVTOOLS_EXTENSION__'] }],
     'prettier/prettier': 'error',
-    'react/state-in-constructor': 'off',
-    'object-curly-newline': ['error', { multiline: true }],
-    'react/static-property-placement': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'no-param-reassign': 'off',
-    'no-console': 'off',
-    'arrow-parens': 'off',
-    'comma-dangle': 'off',
-    'import/no-unresolved': 'off',
-    'import/extensions': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 'error',
+    'react/no-did-mount-set-state': 'error',
+  },
+  settings: {
+    'import/resolver': {
+      'babel-module': {},
+      alias: {
+        map: [
+          ['src', './src'],
+          ['@common', './src/common'],
+          ['@pages', './src/pages'],
+        ],
+        extensions: ['.js', '.json'],
+      },
+    },
+  },
+  globals: {
+    __DEV__: true,
   },
 };

@@ -11,22 +11,11 @@ const persistConfig = {
   whitelist: ['auth'],
 };
 
-const middlewares = [];
-const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
-const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
-middlewares.push(sagaMiddleware);
-
 // Middleware: Redux Persist Persisted Reducer
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-const composer = __DEV__
-  ? compose(applyMiddleware(...middlewares), console.tron.createEnhancer())
-  : compose(applyMiddleware(...middlewares));
-
 // Redux: Store
-const store = createStore(persistedReducer, PersistState, composer);
-
-sagaMiddleware.run(sagas);
+const store = createStore(persistedReducer, PersistState);
 
 // Middleware: Redux Persist Persister
 const persistor = persistStore(store);
