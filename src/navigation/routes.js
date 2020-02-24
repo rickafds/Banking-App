@@ -1,11 +1,9 @@
-export const Routes = { LOGIN: 'login', HOME: 'home' };
+export const Routes = {
+  LOGIN: 'Login',
+  HOME: 'Home',
+};
 
 export const NAVIGATION_TYPE = {
   PUSH: 'push',
   BACK: 'back',
-};
-
-export const TranslaRoutes = {
-  [Routes.LOGIN]: { name: 'login', class: 'login' },
-  [Routes.HOME]: { name: 'home', class: 'home' },
 };

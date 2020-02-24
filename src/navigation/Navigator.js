@@ -1,41 +1,54 @@
-import { createSwitchNavigator } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { Login, Home } from '@pages';
-import { Routes } from './routes';
 
-export const Unauthenticated = createStackNavigator(
-  { [Routes.LOGIN]: { screen: Login } },
-  { initialRouteName: Routes.LOGIN, navigationOptions: { header: null } }
-);
-
-export const Authenticated = createStackNavigator(
-  { [Routes.HOME]: { screen: Home } },
-  { initialRouteName: Routes.HOME, navigationOptions: { header: null } }
-);
-
-export const initNavigator = keepConnected =>
-  createStackNavigator(
-    {
-      RootStack: createSwitchNavigator(
-        {
-          [Routes.UNAUTHENTICATED_AREA]: Unauthenticated,
-          [Routes.AUTHENTICATED_AREA]: Authenticated,
-        },
-        {
-          initialRouteName: keepConnected
-            ? Routes.AUTHENTICATED_AREA
-            : Routes.UNAUTHENTICATED_AREA,
-        }
-      ),
+const Authenticated = createStackNavigator(
+  {
+    HomeScreen: {
+      screen: Home,
     },
-    {
-      initialRouteName: 'RootStack',
-      navigationOptions: { header: null },
+  },
+  {
+    initialRouteName: 'HomeScreen',
+    navigationOptions: {
+      header: null,
+    },
+  }
+);
 
-      cardStyle: {
-        backgroundColor: 'transparent',
-        opacity: 1,
+const Unauthenticated = createStackNavigator(
+  {
+    LoginScreen: {
+      screen: Login,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: 'transparent',
+        },
+        headerTitle: false,
       },
-    }
-  );
+    },
+  },
+  {
+    initialRouteName: 'LoginScreen',
+    navigationOptions: {
+      header: null,
+      headerTransparent: true,
+    },
+  }
+);
+
+const initNavigator = createSwitchNavigator(
+  {
+    Auth: {
+      screen: Authenticated,
+    },
+    Unau: {
+      screen: Unauthenticated,
+    },
+  },
+  {
+    initialRouteName: 'Unau',
+  }
+);
+
+export default createAppContainer(initNavigator);
