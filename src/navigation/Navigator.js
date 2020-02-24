@@ -1,6 +1,6 @@
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Login, Home } from '@pages';
+import { Login, Home, ForgotPassword as Forgot } from '@pages';
 
 const Authenticated = createStackNavigator(
   {
@@ -21,8 +21,21 @@ const Unauthenticated = createStackNavigator(
     LoginScreen: {
       screen: Login,
       navigationOptions: {
+        headerTransparent: true,
         headerStyle: {
           backgroundColor: 'transparent',
+        },
+        headerTitle: false,
+        title: 'Login',
+      },
+    },
+    ForgotPassword: {
+      screen: Forgot,
+      navigationOptions: {
+        headerTransparent: true,
+        headerStyle: {
+          backgroundColor: 'transparent',
+          borderBottomWidth: 0,
         },
         headerTitle: false,
       },

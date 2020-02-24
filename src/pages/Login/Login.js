@@ -26,6 +26,7 @@ const Login = ({
   errors,
   request,
   error,
+  forgot,
 }) => (
   <Container>
     <TopContainer>
@@ -66,7 +67,7 @@ const Login = ({
       </Button>
     </MiddleContainer>
     <RopateContainer>
-      <LabelForgot>Esqueceu a sua senha?</LabelForgot>
+      <LabelForgot onPress={forgot}>Esqueceu a sua senha?</LabelForgot>
     </RopateContainer>
   </Container>
 );

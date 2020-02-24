@@ -13,8 +13,8 @@ const initialValues = {
 
 class LoginContainer extends PureComponent {
   render() {
-    const { Login, request, error } = this.props;
-    console.tron.log(this.props);
+    const { Login, request, error, navigation } = this.props;
+    const Forgot = () => navigation.navigate('ForgotPassword');
     return (
       <Formik
         initialValues={{ ...initialValues }}
@@ -24,7 +24,14 @@ class LoginContainer extends PureComponent {
           Login(values.cpf, values.password);
         }}
       >
-        {props => <LoginScreen {...props} request={request} error={error} />}
+        {props => (
+          <LoginScreen
+            {...props}
+            request={request}
+            error={error}
+            forgot={Forgot}
+          />
+        )}
       </Formik>
     );
   }
