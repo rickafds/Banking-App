@@ -34,7 +34,7 @@ const Unauthenticated = createStackNavigator(
       navigationOptions: {
         headerTransparent: true,
         headerStyle: {
-          backgroundColor: 'transparent',
+          backgroundColor: '#fff',
           borderBottomWidth: 0,
         },
         headerTitle: false,

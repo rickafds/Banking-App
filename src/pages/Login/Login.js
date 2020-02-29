@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
-import { string, shape, func, bool } from 'prop-types';
+import { string, shape, func, bool, object, oneOfType } from 'prop-types';
 import { white } from '../../utils/colors';
 
 import {
@@ -86,6 +86,7 @@ Login.propTypes = {
   }).isRequired,
   request: bool,
   error: bool.isRequired,
+  forgot: oneOfType([func, object]).isRequired,
 };
 
 Login.defaultProps = {

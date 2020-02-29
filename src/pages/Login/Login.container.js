@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import { bool, func } from 'prop-types';
+import { bool, func, oneOfType, object } from 'prop-types';
 import LoginScreen from './Login';
 import LoginSchema from './Login.schema';
 import { login } from '../../store/ducks/auth';
@@ -40,6 +40,7 @@ class LoginContainer extends PureComponent {
 LoginContainer.propTypes = {
   Login: func.isRequired,
   request: bool.isRequired,
+  navigation: oneOfType([func, object]).isRequired,
   error: bool,
 };
 
