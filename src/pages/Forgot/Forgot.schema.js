@@ -1,7 +1,8 @@
-import { email, object } from 'yup';
+import { string, object } from 'yup';
 
 const validationSchema = object().shape({
-  email: email()
+  email: string()
+    .email()
     .label('email')
     .required('Required'),
 });

@@ -1,14 +1,22 @@
-import Reactotron from 'reactotron-react-native';
-import {reactotronRedux} from 'reactotron-redux';
-import sagaPlugin from 'reactotron-redux-saga';
+import Reactotron, {
+  asyncStorage,
+  trackGlobalErrors,
+} from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux';
+import reactotronSaga from 'reactotron-redux-saga';
 
 if (__DEV__) {
-  const tron = Reactotron.configure()
+  const tron = Reactotron.configure({ name: 'Banking App' })
     .use(reactotronRedux())
-    .use(sagaPlugin())
+    .use(reactotronSaga())
+    .use(trackGlobalErrors())
+    .use(asyncStorage())
+    .useReactNative({
+      asyncStorage: true,
+    })
     .connect();
 
-  tron.clear();
-
   console.tron = tron;
+
+  tron.clear();
 }

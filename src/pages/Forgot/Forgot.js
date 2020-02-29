@@ -1,27 +1,41 @@
 import React from 'react';
 import { string, func, arrayOf } from 'prop-types';
-import svgExample from '../../image/adventure_.svg';
+import SvgExample from '../../image/adventure';
 
 import {
   Container,
   Title,
-  Imagem,
   SubTitle,
   InputText,
   ButtonDefault,
+  Imagem,
+  Wrapper,
 } from './Forgot.styles';
 
-const Forgot = ({ values, handleSubmit, handleChange }) => (
+const Forgot = ({
+  values,
+  handleSubmit,
+  handleChange,
+  handleBlur,
+  loading,
+  errors,
+}) => (
   <Container>
     <Title>Esqueceu a senha?</Title>
-    <Imagem width="200" height="200" source={svgExample} />
+    <Wrapper>
+      <Imagem width="200" height="200" />
+    </Wrapper>
     <SubTitle>Insira o endereço de e-mail associado à sua conta</SubTitle>
     <InputText
+      id="email"
+      name="email"
       placeholder="Insira o endereço de e-mail"
       value={values.email}
       onChangeText={handleChange('email')}
+      onBlur={handleBlur('email')}
+      error={errors.email}
     />
-    <ButtonDefault label="ALTERAR" onPress={handleSubmit} />
+    <ButtonDefault label="ALTERAR" loading={loading} onPress={handleSubmit} />
   </Container>
 );
 

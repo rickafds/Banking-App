@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { isIphoneX } from 'react-native-iphone-x-helper';
-import SvgUri from 'react-native-svg-uri';
 import { Input, Button } from '@common';
+import SvgExample from '../../image/adventure';
 
 export const Container = styled.View`
   flex: 1;
@@ -15,9 +15,13 @@ export const Title = styled.Text`
   font-size: 16px;
 `;
 
-export const Imagem = styled(SvgUri)`
-  display: flex;
+export const Wrapper = styled.View`
+  width: 100%;
   align-items: center;
+`;
+
+export const Imagem = styled(SvgExample)`
+  display: flex;
   margin-top: 30px;
 `;
 
