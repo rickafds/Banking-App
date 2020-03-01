@@ -61,7 +61,7 @@ const Unauthenticated = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'LoginScreen',
+    initialRouteName: 'ForgotUpdate',
     navigationOptions: {
       header: null,
       headerTransparent: true,

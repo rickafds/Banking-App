@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 import { Input, Button } from '@common';
-import SvgExample from '../../image/adventure';
+import ForgotImage from '../../image/adventure';
 
 export const Container = styled.View`
   flex: 1;
@@ -20,7 +20,7 @@ export const Wrapper = styled.View`
   align-items: center;
 `;
 
-export const Imagem = styled(SvgExample)`
+export const Imagem = styled(ForgotImage)`
   display: flex;
   margin-top: 30px;
 `;

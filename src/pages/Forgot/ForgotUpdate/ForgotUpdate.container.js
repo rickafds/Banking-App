@@ -1,11 +1,23 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { Form } from '@common';
 
-import { View } from 'react-native';
+import ForgotUpdate from './ForgotUpdate';
 
-// import { Container } from './styles';
+export default class ForgotUpdateContainer extends PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      next: false,
+    };
+  }
 
-export default class ForgotUpdate extends Component {
   render() {
-    return <View />;
+    const handleNext = () => {
+      this.setState({ next: true });
+    };
+    const { next } = this.state;
+    return (
+      <Form>{props => <ForgotUpdate next={handleNext} valid={next} />}</Form>
+    );
   }
 }
