@@ -5,12 +5,12 @@ import '~/config/ReactotronConfig';
 
 import { Provider } from 'react-redux';
 import { store, persistor } from './store';
-import Router from './navigation/Navigator';
+import { AppNavigator } from './navigation/Navigator';
 
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-      <Router />
+      <AppNavigator />
     </PersistGate>
   </Provider>
 );

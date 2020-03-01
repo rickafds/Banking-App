@@ -1,7 +1,7 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
-import { NavigationActions } from 'react-navigation';
 import api from '../../services/api';
 import { forgotError, forgotSucess } from '../ducks/forgot';
+import { AlterScreen } from '../ducks/navigation';
 
 function* requestForgot(action) {
   try {
@@ -12,7 +12,7 @@ function* requestForgot(action) {
     });
     if (user.status === 201) {
       yield put(forgotSucess());
-      yield put(NavigationActions.navigate({ routeName: 'ForgotPassword' }));
+      yield put(AlterScreen('ForgotUpdate'));
     }
   } catch (err) {
     yield put(forgotError());

@@ -1,6 +1,15 @@
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { connect } from 'react-redux';
+import {
+  createReactNavigationReduxMiddleware,
+  createReduxContainer,
+} from 'react-navigation-redux-helpers';
 import { Login, Home, ForgotPassword as Forgot, ForgotUpdate } from '@pages';
+
+const middleware = createReactNavigationReduxMiddleware(
+  state => state.navigation
+);
 
 const Authenticated = createStackNavigator(
   {
@@ -74,4 +83,14 @@ const initNavigator = createSwitchNavigator(
   }
 );
 
-export default createAppContainer(initNavigator);
+const AppWithNavigationState = createReduxContainer(initNavigator, 'root');
+
+const mapStateToProps = state => ({
+  state: state.navigation,
+});
+
+const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);
+
+const container = createAppContainer(initNavigator);
+
+export { container, AppNavigator, middleware };
