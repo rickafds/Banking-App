@@ -1,6 +1,5 @@
 import React from 'react';
 import { string, func, arrayOf } from 'prop-types';
-import SvgExample from '../../image/adventure';
 
 import {
   Container,
