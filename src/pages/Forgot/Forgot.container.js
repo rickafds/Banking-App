@@ -1,6 +1,7 @@
 import { Form } from '@common';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { func, bool } from 'prop-types';
 import Forgot from './Forgot';
 import ForgotSchema from './Forgot.schema';
 import { forgot } from '../../store/ducks/forgot';
@@ -32,5 +33,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   ForgotRequest: forgot,
+};
+
+ForgotContainer.propTypes = {
+  loading: bool.isRequired,
+  ForgotRequest: func.isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ForgotContainer);

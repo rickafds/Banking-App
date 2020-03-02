@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeInput from 'react-native-confirmation-code-input';
+import { func, string, objectOf, bool } from 'prop-types';
 import { picled } from '../../../utils/colors';
 
 import {
@@ -12,9 +13,20 @@ import {
   ImagemContainer,
   ResendLabel,
   Resend,
+  TextInput,
+  BodyContainer,
+  TextErro,
 } from './ForgotUpdate.styles';
 
-const ForgotUpdate = ({ handleSubmit, handleChange, next, valid }) => (
+const ForgotUpdate = ({
+  handleSubmit,
+  handleChange,
+  next,
+  valid,
+  values,
+  handleBlur,
+  errors,
+}) => (
   <Container>
     <HeaderContainer>
       <Title>Verificação</Title>
@@ -23,7 +35,33 @@ const ForgotUpdate = ({ handleSubmit, handleChange, next, valid }) => (
       <Image />
     </ImagemContainer>
     {valid ? (
-      <SubTitle>teste</SubTitle>
+      <>
+        <BodyContainer>
+          <TextInput
+            secureTextEntry
+            id="password"
+            name="password"
+            placeholder="Digite a nova senha"
+            value={values.password}
+            onChangeText={handleChange('password')}
+            onBlur={handleBlur('password')}
+            error={errors.password}
+          />
+          <TextInput
+            secureTextEntry
+            placeholder="Confirme a sua senha"
+            id="confirm_password"
+            name="confirm_password"
+            value={values.confirm_password}
+            onChangeText={handleChange('confirm_password')}
+            onBlur={handleBlur('confirm_password')}
+            error={errors.confirm_password}
+          />
+          {errors ? <TextErro>{errors.confirm_password}</TextErro> : null}
+
+          <ButtonSend label="ALTERAR" onPress={handleSubmit} />
+        </BodyContainer>
+      </>
     ) : (
       <>
         <SubTitle>
@@ -42,15 +80,33 @@ const ForgotUpdate = ({ handleSubmit, handleChange, next, valid }) => (
           codeInputStyle={{ fontWeight: '800' }}
           activeColor={picled}
           inactiveColor={picled}
+          onCodeChange={values.code}
+          onBlur={handleBlur('code')}
+          onFulfill={handleChange('code')}
         />
         <ResendLabel>
           Não recebeu o código? <Resend>Reenviar código</Resend>
         </ResendLabel>
 
-        <ButtonSend label="ALTERAR" onPress={next} />
+        <ButtonSend label="CONTINUAR" onPress={next} />
       </>
     )}
   </Container>
 );
+
+ForgotUpdate.propTypes = {
+  handleSubmit: func.isRequired,
+  handleChange: func.isRequired,
+  handleBlur: func.isRequired,
+  next: func.isRequired,
+  values: objectOf({
+    password: string.isRequired,
+  }).isRequired,
+  errors: objectOf({
+    password: string.isRequired,
+    confirm_password: string.isRequired,
+  }).isRequired,
+  valid: bool.isRequired,
+};
 
 export default ForgotUpdate;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, func, arrayOf } from 'prop-types';
+import { string, func, arrayOf, bool, objectOf } from 'prop-types';
 
 import {
   Container,
@@ -44,5 +44,10 @@ Forgot.propTypes = {
   }).isRequired,
   handleSubmit: func.isRequired,
   handleChange: func.isRequired,
+  handleBlur: func.isRequired,
+  loading: bool.isRequired,
+  errors: objectOf({
+    email: string.isRequired,
+  }).isRequired,
 };
 export default Forgot;

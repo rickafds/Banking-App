@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { isIphoneX } from 'react-native-iphone-x-helper';
-import { Button } from '@common';
+import { Button, Input } from '@common';
 import { white, malibu, raven } from '../../../utils/colors';
 import BussinessMan from '../../../image/businessman';
 
@@ -52,4 +52,17 @@ export const Resend = styled.Text`
 
 export const ButtonSend = styled(Button)`
   margin: 40px;
+`;
+
+export const BodyContainer = styled.View`
+  flex: 2;
+`;
+
+export const TextInput = styled(Input)`
+  margin: 30px 50px 10px 50px;
+`;
+
+export const TextErro = styled.Text`
+  text-align: center;
+  margin: 10px;
 `;
