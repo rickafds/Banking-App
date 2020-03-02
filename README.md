@@ -1,0 +1,2 @@
+# Banking-App
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8a3d777060d44f8cb6e1aad41122cd60)](https://app.codacy.com/manual/rickafds/Banking-App?utm_source=github.com&utm_medium=referral&utm_content=rickafds/Banking-App&utm_campaign=Badge_Grade_Dashboard)
