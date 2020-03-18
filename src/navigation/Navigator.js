@@ -6,6 +6,7 @@ import {
   createReduxContainer,
 } from 'react-navigation-redux-helpers';
 import { Login, Home, ForgotPassword as Forgot, ForgotUpdate } from '@pages';
+import { white } from '../utils/colors';
 
 const middleware = createReactNavigationReduxMiddleware(
   state => state.navigation
@@ -43,7 +44,7 @@ const Unauthenticated = createStackNavigator(
       navigationOptions: {
         headerTransparent: true,
         headerStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: { white },
           borderBottomWidth: 0,
         },
         headerTitle: false,
